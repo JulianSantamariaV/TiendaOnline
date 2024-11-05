@@ -1,0 +1,43 @@
+/*
+    #FAF7F0: Un color beige claro, ideal para fondos o áreas amplias de contenido.
+color-beige-claro: #FAF7F0;
+
+    #D8D2C2: Un color beige más oscuro, perfecto para elementos de fondo o detalles sutiles.
+color-beige-oscuro: #D8D2C2;
+
+    #B17457: Un color cálido, una especie de marrón rojizo, que puede usarse para llamar la atención (por ejemplo, en botones o enlaces importantes).
+color-marron-rojo: #B17457;
+
+    #574A49: Un color marrón oscuro que se puede usar para el texto o fondos oscuros.
+color-marron-oscuro: #574A49;
+*/
+
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: rgb(250, 247, 240);
+    color: rgb(74, 73, 71);
+}
+
+nav {
+    background: transparent;
+    z-index: 1000;
+}
