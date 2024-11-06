@@ -9,7 +9,7 @@ color-beige-oscuro: #D8D2C2;
 color-marron-rojo: #B17457;
 
     #574A49: Un color marrón oscuro que se puede usar para el texto o fondos oscuros.
-color-marron-oscuro: #574A49;
+color-marron-oscuro: #574A49 rgb(74, 73, 71)
 */
 
 html {
@@ -41,3 +41,32 @@ nav {
     background: transparent;
     z-index: 1000;
 }
+
+.dropdown-toggle::after {
+    display: none;
+}
+
+.dropdown-item {
+    color: rgb(74, 73, 71) !important;
+}
+
+#carouselHome {
+    width: 100%; /* Asegura que el carrusel ocupe el ancho completo */
+    max-width: 100%; /* Evita que sobrepase el ancho */
+    height: 650px; /* Ajusta la altura que deseas para el carrusel */
+    overflow: hidden; /* Oculta cualquier parte que sobresalga */
+}
+
+    #carouselHome .carousel-inner {
+        height: 100%; /* Asegura que las imágenes ocupen el espacio completo */
+    }
+
+    #carouselHome .carousel-item {
+        height: 100%; /* Asegura que cada item del carrusel tenga la misma altura */
+    }
+
+        #carouselHome .carousel-item img {
+            width: 100%; /* Ocupa todo el ancho */
+            height: 100%; /* Ocupa todo el alto del contenedor del carrusel */
+            
+        }
