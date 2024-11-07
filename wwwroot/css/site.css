@@ -36,6 +36,16 @@ nav {
     z-index: 1000;
 }
 
+    nav a {
+        list-style: none;
+        color: var(--color-marron-oscuro) !important;
+        margin-right: 2rem;
+    }
+
+        nav a:hover {
+            color: var(--color-marron-rojo) !important;
+        }
+
 .dropdown-toggle::after {
     display: none;
 }
@@ -86,3 +96,6 @@ footer {
     footer li {
         list-style: none;
     }
+
+
+
