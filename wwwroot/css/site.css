@@ -1,40 +1,34 @@
-/*
-    #FAF7F0: Un color beige claro, ideal para fondos o áreas amplias de contenido.
-color-beige-claro: #FAF7F0;
-
-    #D8D2C2: Un color beige más oscuro, perfecto para elementos de fondo o detalles sutiles.
-color-beige-oscuro: #D8D2C2;
-
-    #B17457: Un color cálido, una especie de marrón rojizo, que puede usarse para llamar la atención (por ejemplo, en botones o enlaces importantes).
-color-marron-rojo: #B17457;
-
-    #574A49: Un color marrón oscuro que se puede usar para el texto o fondos oscuros.
-color-marron-oscuro: #574A49 rgb(74, 73, 71)
-*/
+/* Colores definidos */
+:root {
+    --color-beige-claro: #FAF7F0; /* Un color beige claro, ideal para fondos o áreas amplias de contenido. */
+    --color-beige-oscuro: #D8D2C2; /* Un color beige más oscuro, perfecto para elementos de fondo o detalles sutiles. */
+    --color-marron-rojo: #B17457; /* Un color cálido, una especie de marrón rojizo, que puede usarse para llamar la atención. */
+    --color-marron-oscuro: #574A49; /* Un color marrón oscuro que se puede usar para el texto o fondos oscuros. */
+}
 
 html {
     font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html {
+        font-size: 16px;
+    }
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 html {
-  position: relative;
-  min-height: 100%;
+    position: relative;
+    min-height: 100%;
 }
 
 body {
     margin-bottom: 60px;
-    background-color: rgb(250, 247, 240);
-    color: rgb(74, 73, 71);
+    background-color: var(--color-beige-claro); 
+    color: var(--color-marron-oscuro); 
 }
 
 nav {
@@ -47,26 +41,48 @@ nav {
 }
 
 .dropdown-item {
-    color: rgb(74, 73, 71) !important;
+    color: var(--color-marron-oscuro) !important
 }
 
 #carouselHome {
-    width: 100%; /* Asegura que el carrusel ocupe el ancho completo */
-    max-width: 100%; /* Evita que sobrepase el ancho */
-    height: 650px; /* Ajusta la altura que deseas para el carrusel */
-    overflow: hidden; /* Oculta cualquier parte que sobresalga */
+    width: 100%;
+    max-width: 100%;
+    height: 950px;
+    padding: 3rem;
+    overflow: hidden;
 }
 
     #carouselHome .carousel-inner {
-        height: 100%; /* Asegura que las imágenes ocupen el espacio completo */
+        height: 100%;
     }
 
     #carouselHome .carousel-item {
-        height: 100%; /* Asegura que cada item del carrusel tenga la misma altura */
+        height: 100%;
     }
 
         #carouselHome .carousel-item img {
-            width: 100%; /* Ocupa todo el ancho */
-            height: 100%; /* Ocupa todo el alto del contenedor del carrusel */
-            
+            width: 100%;
+            height: 100%;
         }
+
+footer {
+    clear: both;
+    background: var(--color-marron-oscuro);
+    position: relative;
+}
+
+    footer h3 {
+        color: var(--color-beige-oscuro); 
+        display: flex;
+        justify-content: start;
+        align-items: center;
+    }
+
+    footer a {
+        text-decoration: none;
+        color: var(--color-beige-oscuro) !important;
+    }
+
+    footer li {
+        list-style: none;
+    }
