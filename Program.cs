@@ -1,6 +1,13 @@
+using TiendaOnline.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Configura el contexto de base de datos
+builder.Services.AddDbContext<GestionInventarioContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("TiendaOnlineDB")));
+
+// Otros servicios
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
