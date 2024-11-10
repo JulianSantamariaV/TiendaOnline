@@ -48,6 +48,20 @@ nav {
             color: var(--color-marron-rojo) !important;
         }
 
+
+.dropdown:hover .dropdown-menu {
+    display: block; 
+}
+
+.dropdown-menu {
+    display: none; 
+    position: absolute; 
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+}
+
+
 .dropdown-toggle::after {
     display: none;
 }

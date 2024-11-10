@@ -1,9 +1,4 @@
 ﻿@model IEnumerable<Producto>
 
-
+<partial name="_ProductoGallery" />
 <partial name="_Producto" model="@Model" />
-
-@if (ViewBag.Message != null)
-{
-    <p>@ViewBag.Message</p>
-}
