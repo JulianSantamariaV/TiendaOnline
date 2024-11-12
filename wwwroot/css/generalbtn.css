@@ -1,0 +1,13 @@
+﻿.generalbtn {
+    background-color: var(--color-marron-rojo);
+    color: var(--color-beige-claro);
+    border: none;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+    .generalbtn:hover {
+        background-color: var(--color-beige-claro);
+        color: var(--color-marron-oscuro);
+        transform: scale(1.05);
+    }
+}

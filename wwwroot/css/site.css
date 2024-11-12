@@ -27,8 +27,10 @@ html {
 
 body {
     margin-bottom: 60px;
-    background-color: var(--color-beige-claro); 
-    color: var(--color-marron-oscuro); 
+    background-color: var(--color-beige-claro);
+    color: var(--color-marron-oscuro);
+    display: flex;
+    flex-direction: column;
 }
 
 nav {
@@ -45,6 +47,20 @@ nav {
         nav a:hover {
             color: var(--color-marron-rojo) !important;
         }
+
+
+.dropdown:hover .dropdown-menu {
+    display: block; 
+}
+
+.dropdown-menu {
+    display: none; 
+    position: absolute; 
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+}
+
 
 .dropdown-toggle::after {
     display: none;
@@ -76,26 +92,55 @@ nav {
         }
 
 footer {
-    clear: both;
     background: var(--color-marron-oscuro);
-    position: relative;
+    padding: 20px 0;
+    color: var(--color-beige-oscuro);
 }
 
     footer h3 {
-        color: var(--color-beige-oscuro); 
-        display: flex;
-        justify-content: start;
-        align-items: center;
+        color: var(--color-beige-oscuro);
+        margin-bottom: 10px;
+        font-size: 1.25rem;
     }
 
     footer a {
-        text-decoration: none;
         color: var(--color-beige-oscuro) !important;
+        text-decoration: none;
+        transition: color 0.3s ease;
     }
 
-    footer li {
-        list-style: none;
+        footer a:hover {
+            color: var(--color-marron-rojo) !important;
+        }
+
+    footer ul {
+        padding-left: 0;
     }
 
+        footer ul li {
+            list-style: none;
+            margin-bottom: 0.8rem;
+        }
+
+    footer .d-flex a {
+        font-size: 0.9rem;
+        margin: 0 1rem;
+        transition: transform 0.3s ease, filter 0.3s ease;
+    }
+
+        footer .d-flex a:hover {
+            transform: scale(1.1);
+        }
 
 
+
+    footer .col-md-3 {
+        flex: 1 1 22%;
+        margin-bottom: 15px;
+    }
+
+@media (max-width: 768px) {
+    footer .col-md-3 {
+        flex: 1 1 48%;
+    }
+}
