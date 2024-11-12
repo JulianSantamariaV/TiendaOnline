@@ -7,6 +7,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<GestionInventarioContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("TiendaOnlineDB")));
 
+// Habilitar el uso de sesiones
+builder.Services.AddSession();
+
 // Otros servicios
 builder.Services.AddControllersWithViews();
 
@@ -16,7 +19,6 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -24,6 +26,9 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+// Activar el uso de sesiones
+app.UseSession();
 
 app.UseAuthorization();
 

@@ -1,0 +1,26 @@
+﻿
+<h2>Carrito de Compras</h2>
+<table>
+    <tr>
+        <th>Producto</th>
+        <th>Cantidad</th>
+        <th>Precio Unitario</th>
+        <th>Total</th>
+        <th>Acciones</th>
+    </tr>
+    @foreach (var item in Model.Items)
+    {
+        <tr>
+            <td>@item.Producto.Nombre</td>
+            <td>@item.Cantidad</td>
+            <td>@item.Producto.Precio</td>
+            <td>@(item.Cantidad * item.Producto.Precio)</td>
+            <td>
+                <a href="@Url.Action("Eliminar", "Carrito", new { productoId = item.Producto.Id })">Eliminar</a>
+            </td>
+        </tr>
+    }
+</table>
+
+<h3>Total: @Model.CalcularTotal()</h3>
+<a href="@Url.Action("Checkout", "Carrito")">Proceder al Pago</a>

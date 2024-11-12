@@ -31,20 +31,30 @@
         @foreach (var producto in Model)
         {
             <div class="col-sm-12 col-md-6 col-lg-4">
-                <div class="card">                
-                    <img id="card-img-@producto.ProductoID" class="card-img-top" src="@producto.ImageUrl" alt="Imagen de @producto.Nombre"
-                         onmouseover="this.src='@producto.ImageUrlSecond'"
-                         onmouseout="this.src='@producto.ImageUrl'">
+                <div class="card-container">
+                    <a class="favorite" href="#">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="black" class="bi bi-heart" viewBox="0 0 16 16">
+                            <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143q.09.083.176.171a3 3 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15" />
+                        </svg>
+                    </a>
+                    <div class="card">
+                        <img id="card-img-@producto.ProductoID" class="card-img-top" src="@producto.ImageUrl" alt="Imagen de @producto.Nombre"
+                             onmouseover="this.src='@producto.ImageUrlSecond'"
+                             onmouseout="this.src='@producto.ImageUrl'">
 
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">@producto.Nombre</h5>
-                        <p class="card-text text-muted" style="font-size: 1.2rem;">$@producto.Precio</p>
+                        <div class="card-body d-flex flex-column">
+                            <h5 class="card-title">@producto.Nombre</h5>
+                            <p class="card-text text-muted" style="font-size: 1.2rem;">$@producto.Precio</p>
+                        </div>
+                        <a class="btn generalbtn mt-auto m-3" asp-action="Add" asp-controller="ShoppingCart" asp-route-productoId="@producto.ProductoID" asp-route-cantidad="1">
+                            Agregar al carrito
+                        </a>
                     </div>
                 </div>
             </div>
         }
+
     </div>
 
-    <div></div>
 
 </section>
