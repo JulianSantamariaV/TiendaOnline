@@ -4,14 +4,9 @@ using TiendaOnline.Services;
 
 namespace TiendaOnline.Controllers
 {
-    public class ShoppingCartController : Controller
+    public class ShoppingCartController(GestionInventarioContext context) : Controller
     {
-        private readonly GestionInventarioContext _context;
-
-        public ShoppingCartController(GestionInventarioContext context)
-        {
-            _context = context;
-        }
+        private readonly GestionInventarioContext _context = context;
 
         public IActionResult Index()
         {

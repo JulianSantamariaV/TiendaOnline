@@ -2,7 +2,7 @@
 {
     public class ShoppingCart
     {
-        private static ShoppingCart _shoppingCart;
+        private static ShoppingCart? _shoppingCart;
         private static readonly object _lock = new object();
 
         public List<ShoppingCartItem> Items { get; set; } = new List<ShoppingCartItem>();
@@ -49,6 +49,11 @@
         public decimal TotalAmount()
         {
             return Items.Sum(i => i.Producto.Precio * i.Cantidad);
+        }
+
+        public decimal CalcularTotal()
+        {
+            return 2;
         }
     }
 }
