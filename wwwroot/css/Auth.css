@@ -1,0 +1,99 @@
+﻿:root {
+    --color-beige-claro: #FAF7F0; /* Un color beige claro, ideal para fondos o áreas amplias de contenido. */
+    --color-beige-oscuro: #D8D2C2; /* Un color beige más oscuro, perfecto para elementos de fondo o detalles sutiles. */
+    --color-marron-rojo: #B17457; /* Un color cálido, una especie de marrón rojizo, que puede usarse para llamar la atención. */
+    --color-marron-oscuro: #574A49; /* Un color marrón oscuro que se puede usar para el texto o fondos oscuros. */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--color-marron-oscuro);
+}
+
+.wrapper {
+    position: relative;
+    width: 750px;
+    height: 450px;
+    background: transparent;
+    border: 2px solid var(--color-marron-rojo);
+}
+
+    .wrapper .form-box {
+        position: absolute;
+        top: 0;
+        width: 50%;
+        height: 100%;
+        /*background: var(--color-beige-oscuro);*/
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .wrapper .form-box.login {
+        left: 0;
+        padding: 0 40px;
+    }
+
+.form-box h2 {
+    font-size: 32px;
+    color: var(--color-beige-claro);
+    text-align: center;
+}
+
+.form-box .input-box {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    margin: 25px 0;
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid var(--color-beige-claro);
+    color: var(--color-beige-claro);
+}
+
+.btn {
+    position: relative;
+    width: 100%;
+    height: 45px;
+    background: transparent;
+    border: 2px solid var(--color-marron-rojo);
+    outline: none;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 16px;
+    color: var(--color-beige-claro);
+    font-weight: 600;
+}
+
+.form-box .logreg-link{
+    font-size: 14.5px;
+    color: var(--color-beige-claro);
+    text-align: center;
+    margin: 20px 0 10px;
+}
+
+.logreg-link p a {
+    color: var(--color-marron-rojo);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.logreg-link p a:hover {
+    text-decoration: underline;
+}

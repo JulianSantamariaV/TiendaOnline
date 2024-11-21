@@ -1,43 +1,38 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TiendaOnline.Data;
 using TiendaOnline.Models;
+using TiendaOnline.Repositories;
 
 namespace TiendaOnline.Controllers
 {
-    public class ProductoController : Controller
+    public class ProductoController(IRepository<Producto> productoRepository) : Controller
     {
-        private readonly GestionInventarioContext _context;
+        private readonly IRepository<Producto> _productoRepository = productoRepository;
 
-        public ProductoController(GestionInventarioContext context)
+        public async Task<IActionResult> Index()
         {
-            _context = context;
-        }
-
-        public IActionResult Index()
-        {
-            var productos = _context.Productos.ToList();
+            var productos = await _productoRepository.GetAllAsync();
             return View(productos);
         }
 
-        public IActionResult Hombre()
+        public async Task<IActionResult> Hombre()
         {
-            var productosHombre = _context.Productos.Where(p => p.Categoria.ToLower() == "hombre").ToList();
+            var productosHombre = (await _productoRepository.GetAllAsync())
+                .Where(p => p.Categoria?.ToLower() == "hombre").ToList();
 
-            if (!productosHombre.Any())
+            if (productosHombre.Count == 0)
             {
-                ViewBag.Message = "No se encontraron productos en la categoría 'mujer'.";
+                ViewBag.Message = "No se encontraron productos en la categoría 'hombre'.";
             }
 
             return View(productosHombre);
         }
 
-        public IActionResult Mujer()
+        public async Task<IActionResult> Mujer()
         {
-            var productosMujer = _context.Productos
-                .Where(p => !string.IsNullOrEmpty(p.Categoria) && p.Categoria.ToLower() == "mujer")
-                .ToList();
+            var productosMujer = (await _productoRepository.GetAllAsync())
+                .Where(p => !string.IsNullOrEmpty(p.Categoria) && p.Categoria.Equals("mujer", StringComparison.CurrentCultureIgnoreCase)).ToList();
 
-            if (!productosMujer.Any())
+            if (productosMujer.Count == 0)
             {
                 ViewBag.Message = "No se encontraron productos en la categoría 'mujer'.";
             }
@@ -45,16 +40,19 @@ namespace TiendaOnline.Controllers
             return View(productosMujer);
         }
 
-        public IActionResult Niño()
+        public async Task<IActionResult> Niño()
         {
-            var productosNiño = _context.Productos.Where(p => p.Categoria.ToLower() == "niño").ToList();
+            var productosNiño = (await _productoRepository.GetAllAsync())
+                .Where(p => p.Categoria?.ToLower() == "niño").ToList();
 
-            if (!productosNiño.Any())
+            if (productosNiño.Count == 0)
             {
-                ViewBag.Message = "No se encontraron productos en la categoría 'mujer'.";
+                ViewBag.Message = "No se encontraron productos en la categoría 'niño'.";
             }
 
             return View(productosNiño);
         }
+
+
     }
 }
