@@ -20,18 +20,26 @@ html {
     box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
-html {
-    position: relative;
-    min-height: 100%;
-}
-
-body {
-    margin-bottom: 60px;
+html, body {
+    height: 100%;
+    
+    padding: 0;
     background-color: var(--color-beige-claro);
     color: var(--color-marron-oscuro);
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ocupa el 100% de la altura visible */
+}
+
+main {
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
 }
+
 
 nav {
     background: transparent;
@@ -95,6 +103,7 @@ footer {
     background: var(--color-marron-oscuro);
     padding: 20px 0;
     color: var(--color-beige-oscuro);
+    margin: 0 0 40px 0;
 }
 
     footer h3 {

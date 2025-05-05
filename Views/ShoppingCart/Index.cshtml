@@ -1,26 +1,42 @@
-﻿
-<h2>Carrito de Compras</h2>
-<table>
-    <tr>
-        <th>Producto</th>
-        <th>Cantidad</th>
-        <th>Precio Unitario</th>
-        <th>Total</th>
-        <th>Acciones</th>
-    </tr>
-    @foreach (var item in Model.Items)
-    {
-        <tr>
-            <td>@item.Producto.Nombre</td>
-            <td>@item.Cantidad</td>
-            <td>@item.Producto.Precio</td>
-            <td>@(item.Cantidad * item.Producto.Precio)</td>
-            <td>
-                <a href="@Url.Action("Eliminar", "Carrito", new { productoId = item.Producto.Id })">Eliminar</a>
-            </td>
-        </tr>
-    }
-</table>
+﻿@model List<TiendaOnline.ViewModels.ShoppingCart.ShoppingCartItemDto>
 
-<h3>Total: @Model.CalcularTotal()</h3>
-<a href="@Url.Action("Checkout", "Carrito")">Proceder al Pago</a>
+<h2>Carrito de Compras</h2>
+
+@if (Model.Count == 0)
+{
+    <p>No hay productos en tu carrito.</p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio</th>
+                <th>Total</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        <img src="@item.ImageUrl" alt="@item.Nombre" style="width: 50px; height: 50px;" />
+                        @item.Nombre
+                    </td>
+                    <td>@item.Cantidad</td>
+                    <td>@item.Precio.ToString("C")</td>
+                    <td>@(item.Cantidad * item.Precio).ToString("C")</td>
+                    <td>
+                        @using (Html.BeginForm("RemoveFromCart", "ShoppingCart", new { productoId = item.ProductoID }, FormMethod.Post))
+                        {
+                            <button type="submit" class="btn btn-danger">Eliminar</button>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

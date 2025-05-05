@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TiendaOnline.Data;
 
@@ -11,13 +12,15 @@ using TiendaOnline.Data;
 namespace TiendaOnline.Migrations
 {
     [DbContext(typeof(GestionInventarioContext))]
-    partial class GestionInventarioContextModelSnapshot : ModelSnapshot
+    [Migration("20250416225525_initialcreate")]
+    partial class initialcreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "9.0.4")
+                .HasAnnotation("ProductVersion", "9.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -127,8 +130,7 @@ namespace TiendaOnline.Migrations
 
                     b.Property<string>("Email")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Nombre")
                         .IsRequired()
@@ -137,22 +139,18 @@ namespace TiendaOnline.Migrations
 
                     b.Property<string>("PasswordHash")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("TipoUsuario")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(1);
+                    b.Property<string>("TipoUsuario")
+                        .IsRequired()
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)");
 
                     b.HasKey("UsuarioId");
 
-                    b.HasIndex("Email")
-                        .IsUnique();
-
                     b.ToTable("Usuarios", "inventario");
 
-                    b.HasDiscriminator<int>("TipoUsuario").HasValue(0);
+                    b.HasDiscriminator<string>("TipoUsuario").HasValue("Usuario");
 
                     b.UseTphMappingStrategy();
                 });
@@ -182,7 +180,7 @@ namespace TiendaOnline.Migrations
                                 .HasColumnName("Admin_Telefono");
                         });
 
-                    b.HasDiscriminator().HasValue(2);
+                    b.HasDiscriminator().HasValue("Admin");
                 });
 
             modelBuilder.Entity("TiendaOnline.Models.Usuario.Cliente", b =>
@@ -197,7 +195,7 @@ namespace TiendaOnline.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasDiscriminator().HasValue(1);
+                    b.HasDiscriminator().HasValue("Cliente");
                 });
 
             modelBuilder.Entity("TiendaOnline.Models.DetallePedido", b =>

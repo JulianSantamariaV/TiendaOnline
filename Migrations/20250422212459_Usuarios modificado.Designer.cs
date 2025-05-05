@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TiendaOnline.Data;
 
@@ -11,9 +12,11 @@ using TiendaOnline.Data;
 namespace TiendaOnline.Migrations
 {
     [DbContext(typeof(GestionInventarioContext))]
-    partial class GestionInventarioContextModelSnapshot : ModelSnapshot
+    [Migration("20250422212459_Usuarios modificado")]
+    partial class Usuariosmodificado
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -140,10 +143,12 @@ namespace TiendaOnline.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("TipoUsuario")
+                    b.Property<string>("TipoUsuario")
+                        .IsRequired()
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(1);
+                        .HasMaxLength(8)
+                        .HasColumnType("nvarchar(8)")
+                        .HasDefaultValue("1");
 
                     b.HasKey("UsuarioId");
 
@@ -152,7 +157,7 @@ namespace TiendaOnline.Migrations
 
                     b.ToTable("Usuarios", "inventario");
 
-                    b.HasDiscriminator<int>("TipoUsuario").HasValue(0);
+                    b.HasDiscriminator<string>("TipoUsuario").HasValue("Usuario");
 
                     b.UseTphMappingStrategy();
                 });
@@ -182,7 +187,7 @@ namespace TiendaOnline.Migrations
                                 .HasColumnName("Admin_Telefono");
                         });
 
-                    b.HasDiscriminator().HasValue(2);
+                    b.HasDiscriminator().HasValue("Admin");
                 });
 
             modelBuilder.Entity("TiendaOnline.Models.Usuario.Cliente", b =>
@@ -197,7 +202,7 @@ namespace TiendaOnline.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasDiscriminator().HasValue(1);
+                    b.HasDiscriminator().HasValue("Cliente");
                 });
 
             modelBuilder.Entity("TiendaOnline.Models.DetallePedido", b =>

@@ -1,0 +1,39 @@
+﻿.carousel-wrapper {
+    margin-left: calc(-50vw + 50%);
+    width: 100vw;
+    overflow: hidden;
+    position: relative;
+}
+
+#carouselHome {
+    height: 950px;
+}
+
+.homecarouselimg {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+}
+
+.carousel-caption-bottom {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(177, 116, 87);
+    color: var(--color-beige-claro);
+    text-align: center;
+    font-size: 1rem;
+    padding: 1.5rem;
+    font-weight: 500;
+}
+
+@media (max-width: 768px) {
+    #carouselHome {
+        height: 500px;
+    }
+
+    .carousel-caption-bottom {
+        font-size: 0.85rem;
+        padding: 1rem;
+    }
+}

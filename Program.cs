@@ -12,13 +12,15 @@ builder.Services.AddDbContext<GestionInventarioContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("TiendaOnlineDB")));
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
-
 builder.Services.AddScoped<IProductoFactory, ProductoFactory>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options => {
-        options.LoginPath = "/Account/Login";
-        options.LogoutPath = "/Account/Logout";
+        options.LoginPath = "/Auth/Login";
+        options.LogoutPath = "/Auth/Logout";
+        options.AccessDeniedPath = "/Auth/AccessDenied";
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(30);
+        options.SlidingExpiration = true;
     });
 
 builder.Services.AddAuthorizationBuilder()
@@ -26,7 +28,12 @@ builder.Services.AddAuthorizationBuilder()
     .AddPolicy("Cliente", policy => policy.RequireRole("Cliente"));
 
 // Habilitar el uso de sesiones
-builder.Services.AddSession();
+builder.Services.AddSession( options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // Tiempo de espera de la sesión
+    options.Cookie.HttpOnly = true; // La cookie de sesión no es accesible desde JavaScript
+    options.Cookie.IsEssential = true; // La cookie es esencial para el funcionamiento de la aplicación
+});
 
 // Otros servicios
 builder.Services.AddControllersWithViews();
@@ -47,6 +54,8 @@ app.UseRouting();
 
 // Activar el uso de sesiones
 app.UseSession();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

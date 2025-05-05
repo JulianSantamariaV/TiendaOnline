@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TiendaOnline.Data;
 
@@ -11,9 +12,11 @@ using TiendaOnline.Data;
 namespace TiendaOnline.Migrations
 {
     [DbContext(typeof(GestionInventarioContext))]
-    partial class GestionInventarioContextModelSnapshot : ModelSnapshot
+    [Migration("20250430195821_CambiarTipoUsuarioAInt")]
+    partial class CambiarTipoUsuarioAInt
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

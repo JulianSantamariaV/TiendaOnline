@@ -1,6 +1,5 @@
-﻿using Humanizer;
-using System.ComponentModel.DataAnnotations;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿using System.ComponentModel.DataAnnotations;
+
 
 namespace TiendaOnline.Models
 {
