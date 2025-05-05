@@ -1,0 +1,15 @@
+﻿@if (Model != null && Model.Any())
+{
+    @foreach (var item in Model)
+    {
+        <div>
+            <h4>@item.Nombre</h4>
+            <p>Precio: @item.Precio</p>
+            <p>Cantidad: @item.Cantidad</p>
+        </div>
+    }
+}
+else
+{
+    <p>Tu carrito está vacío.</p>
+}

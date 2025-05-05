@@ -102,7 +102,7 @@ namespace TiendaOnline.Controllers
                 items = _shoppingCartService.GetCartItemsFromSession(HttpContext.Session); // Usamos el servicio inyectado
             }
 
-            return View(items);
+            return View(items ?? new List<ShoppingCartItemDto>());
         }
 
         [HttpPost]

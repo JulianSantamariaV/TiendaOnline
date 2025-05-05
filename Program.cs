@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using TiendaOnline.Repositories;
 using TiendaOnline.Models.Usuario;
 using TiendaOnline.Factories;
+using TiendaOnline.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +14,7 @@ builder.Services.AddDbContext<GestionInventarioContext>(options =>
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IProductoFactory, ProductoFactory>();
+builder.Services.AddScoped<ShoppingCartService>();
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
     .AddCookie(options => {
